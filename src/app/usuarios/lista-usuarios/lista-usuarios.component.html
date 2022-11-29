@@ -1,0 +1,48 @@
+<div class="body-edit py-4">
+    <div class="header-list">
+        <button mat-button color="primary" class="btn-add" routerLink="/usuarios/Novo">
+        <span class="btn-title ml-1">Novo</span>
+        </button>
+    </div>
+    
+    <div class="body-list">
+        <table mat-table [dataSource]="dataSource" matSort class="table-hover table-striped">
+            <!-- RazaoSocial Column -->
+            <ng-container matColumnDef="Nome">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome}} {{element.Sobrenome}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="DataNascimento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nascimento </th>
+                <td mat-cell *matCellDef="let element"> {{element.dataNascimento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Escolaridade">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Escolaridade </th>
+                <td mat-cell *matCellDef="let element"> {{element.escolaridade == 1? 'Infantil': element.escolaridade == 2 ? 'Fundamental' : element.escolaridade == 3 ? 'Medio': 'Superior' }} </td>
+            </ng-container>
+
+            
+            <!-- Editar Column -->
+            <ng-container matColumnDef="Editar">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button class="btn-edit" routerLink="/usuario-editar/{{element.id}}">
+                        <span class="btn-text">Editar</span>
+                    </button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

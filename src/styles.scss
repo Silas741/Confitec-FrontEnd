@@ -1,0 +1,64 @@
+@import "styles/app";
+
+.progress-bar-color-green .mat-progress-bar-fill::after {
+    background-color: #bafaae !important;
+}
+
+.progress-bar-color-green .mat-progress-bar-buffer {
+    background-color: #5fcf49 !important;
+    border-radius: 7px !important;
+}
+
+.progress-bar-color-yellow .mat-progress-bar-fill::after {
+    background-color: #f5e5b8 !important;
+}
+
+.progress-bar-color-yellow .mat-progress-bar-buffer {
+    background-color: #FFC107 !important;
+    border-radius: 7px !important;
+}
+
+.progress-bar-color-primary .mat-progress-bar-fill::after {
+    background-color: #C5CAE9 !important;
+}
+
+.progress-bar-color-primary .mat-progress-bar-buffer {
+    background-color: #3F51B5 !important;
+    border-radius: 7px !important;
+}
+
+.progress-bar-color-accent .mat-progress-bar-fill::after {
+    background-color: #B3E5FC !important;
+}
+
+.progress-bar-color-accent .mat-progress-bar-buffer {
+    background-color: #03A9F4 !important;
+    border-radius: 7px !important;
+}
+
+.progress-bar-color-warn .mat-progress-bar-fill::after {
+    background-color: #FFCDD2 !important;
+    }
+
+.progress-bar-color-warn .mat-progress-bar-buffer {
+    background-color: #F44336 !important;
+    border-radius: 7px !important;
+}
+// ==================================================
+// WIDTH & HEIGHT
+// ==================================================
+
+$size: (
+  'width': (
+    property: width,
+    class: w,
+    values: $size
+  ),
+  'height': (
+    property: height,
+    class: h,
+    values: $size
+  )
+);
+
+$utilities: map-merge($size, $utilities);

@@ -1,0 +1,82 @@
+<app-menu></app-menu>
+<div class="body-edit py-4">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>Dados</ng-template>
+            <div class="col-md-12 mt-2">
+                <form class="matero-form-horizontal" #UsuarioForm="ngForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <mat-form-field>
+                                <mat-label>Nome</mat-label>
+                                <input matInput placeholder="" #nome="ngModel" name="nome" [(ngModel)]="usuario.nome"
+                                    required>
+                                <mat-error *ngIf="nome.invalid">{{"Verifique as informações inseridas"}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <mat-form-field>
+                                <mat-label>Sobrenome</mat-label>
+                                <input matInput placeholder="" #sobrenome="ngModel" name="sobrenome"
+                                    [(ngModel)]="usuario.sobrenome" required>
+                                <mat-error *ngIf="sobrenome.invalid">{{"Verifique as informações inseridas"}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <mat-form-field>
+                                <mat-label>Escolaridade</mat-label>
+                                <select matNativeControl #nasci="ngModel" name="nasci" [(ngModel)]="usuario.escolaridade" required>
+                                    <option value="1">Infantil</option>
+                                    <option value="2">Fundamental</option>
+                                    <option value="3">Medio</option>
+                                    <option value="4">Superior</option>
+                                </select>
+                                <mat-error *ngIf="nasci.invalid">{{"Verifique as informações inseridas"}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <mat-form-field>
+                                <mat-label>Data</mat-label>
+                                <input matInput [matDatepicker]="dp3" [max]="dataAtual"
+                                    [(ngModel)]="usuario.dataNascimento" #data="ngModel" name="data"
+                                    disabled required>
+                                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                                <mat-error *ngIf="data.invalid">{{"Data Invalida"}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="form-group col-md-8 mt-2">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel" name="email" [(ngModel)]="usuario.email"
+                            required>
+                        <mat-error *ngIf="email.invalid">{{"Verifique as informações inseridas"}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div class="btn-group-edit">
+        <button class="btn btn-outline-secondary" routerLink="/Usuarios/Lista">
+
+            <span class="btn-text">Cancelar</span>
+        </button>
+        <div class="btn-subgroup">
+            <button class="btn btn-outline-danger" (click)="ExcluirUsuario(usuario)" *ngIf="usuario.id != ''">
+
+                <span class="btn-text">Excluir</span>
+            </button>
+            <button class="btn btn-primary" (click)="SalvarUsuario(usuario)" [disabled]="UsuarioForm.invalid">
+
+                <span class="btn-text">Salvar</span>
+            </button>
+        </div>
+    </div>
